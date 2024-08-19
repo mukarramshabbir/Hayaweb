@@ -1,0 +1,79 @@
+<!--Designed by Sophie McAlavey-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon.jpeg') }}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+        <!-- Onboarding Overlay -->
+        <div id="onboarding-overlay" class="onboarding-overlay">
+            <div class="onboarding-container">
+                <div class="onboarding-step" id="step-1">
+                    <h2>Welcome to Haya</h2>
+                    <p>Step 1: Enter your email and personal information</p>
+                    <form>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </form>
+                    <button class="next-step" onclick="nextStep(2)">Next</button>
+                </div>
+    
+                <div class="onboarding-step" id="step-2" style="display: none;">
+                    <h2>Step 2: Restaurant Information</h2>
+                    <p>Enter the name of your restaurant, upload a picture, and share meal pictures.</p>
+                    
+                    <form id="restaurant-form" action="/submit-restaurant" method="post" enctype="multipart/form-data">
+
+                        <label for="restaurantName">Restaurant Name:</label>
+                        <input type="text" id="restaurantName" name="restaurantName" required>
+                        <label for="restaurantImage">Restaurant Image:</label>
+                        <input type="file" id="restaurantImage" name="restaurantImage" accept="image/*">
+                        <label for="mealImages">Meal Images:</label>
+                        <input type="file" id="mealImages" name="mealImages" accept="image/*" multiple>
+                    </form>
+                    <button class="next-step" onclick="nextStep(3)">Next</button>
+                </div>
+    
+                <div class="onboarding-step" id="step-3" style="display: none;">
+                    <h2>Step 3: Rewards</h2>
+                    <p>Complete tasks to earn rewards! Look for the yellow gift icon to collect them.</p>
+                    <div class="reward-icon"><a href="index.html"><img src="{{ url_for('static', filename='images/gift.png') }}" alt="gift icon"></a></div>
+                    <button class="close-btn" onclick="closeOnboarding()">Finish</button>
+                </div>
+            </div>
+            <div class="onboarding-close">
+                <button onclick="closeOnboarding()">Close</button>
+            </div>
+        </div>
+
+    <h1>Welcome to Haya</h1>
+    <div id="map-container">
+        <!-- GPS Map will be integrated here -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4413.580044866189!2d2.7732325422544664!3d48.870977777533774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e61d1d92d67925%3A0x2a244a140b2f1da2!2sLe%20Ch%C3%A2teau%20de%20la%20Belle%20au%20Bois%20Dormant!5e0!3m2!1sen!2sie!4v1723673834977!5m2!1sen!2sie" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> <!-- i put a generic google map iframe in for now to get an idea for style-->
+    </div>
+
+    <footer>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/house.png') }}" alt="house icon">
+        </a>
+        <a href="{{ url_for('advertisement') }}">
+            <img src="{{ url_for('static', filename='images/horn.png') }}" alt="horn icon">
+        </a>
+        <a href="{{ url_for('account') }}">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="profile of a person icon">
+        </a>
+    </footer>
+    
+</body>
+</html>
+

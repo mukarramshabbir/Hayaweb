@@ -1,0 +1,44 @@
+<!--Designed by Sophie McAlavey-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Information</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.jpeg') }}" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+    <h1>Account Information</h1>
+
+    <div class="account-info">
+        <form id="account-form" action="/submit-account" method="post" onsubmit="return validateForm()">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="John Doe" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="johndoe@example.com" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/house.png') }}" alt="house icon">
+        </a>
+        <a href="{{ url_for('advertisement') }}">
+            <img src="{{ url_for('static', filename='images/horn.png') }}" alt="horn icon">
+        </a>
+        <a href="{{ url_for('account') }}">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="profile of a person icon">
+        </a>
+    </footer>
+    
+
+</body>
+</html>
+
+
+
